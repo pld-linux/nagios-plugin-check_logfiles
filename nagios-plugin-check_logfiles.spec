@@ -10,6 +10,7 @@ Group:		Networking
 URL:		http://www.consol.com/opensource/nagios/check-logfiles
 Source0:	http://www.consol.com/fileadmin/opensource/Nagios/check_logfiles-%{version}.tar.gz
 # Source0-md5:	fc2b0d394626eb715643cdbbaf13ba69
+Requires:	nagios-core
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
