@@ -3,7 +3,7 @@
 Summary:	Check log files for specific patterns
 Name:		nagios-plugin-%{plugin}
 Version:	3.7.1.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications
 Source0:	https://labs.consol.de/assets/downloads/nagios/%{plugin}-%{version}.tar.gz
@@ -20,7 +20,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		trusted_path	/bin:/sbin:/usr/bin:/usr/sbin
 
 # just to fool configure, nothing arch specific actually
+%if "%{_host_cpu}" == "x32"
+%define		_target_platform	%{_host}
+%else
 %define		_target_platform	%{_host_cpu}-%{_vendor}-%{_os}
+%endif
 
 %description
 check_logfiles is a Plugin for Nagios which scans log files for
