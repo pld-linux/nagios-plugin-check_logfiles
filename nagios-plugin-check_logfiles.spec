@@ -1,6 +1,5 @@
 %define		plugin	check_logfiles
 %include	/usr/lib/rpm/macros.perl
-BuildRequires:	rpm-perlprov >= 4.1-13
 Summary:	Check log files for specific patterns
 Name:		nagios-plugin-%{plugin}
 Version:	2.4.1.9
@@ -9,14 +8,16 @@ License:	BSD
 Group:		Networking
 Source0:	http://www.consol.com/fileadmin/opensource/Nagios/check_logfiles-%{version}.tar.gz
 Source1:	check_logfiles.cfg
-URL:		http://www.consol.com/opensource/nagios/check-logfiles
 # Source0-md5:	fc2b0d394626eb715643cdbbaf13ba69
+URL:		https://labs.consol.de/nagios/check_logfiles/
+BuildRequires:	rpm-perlprov >= 4.1-13
 Requires:	nagios-core
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_sysconfdir	/etc/nagios/plugins
-%define		plugindir	%{_prefix}/lib/nagios/plugins
+%define		_sysconfdir		/etc/nagios/plugins
+%define		plugindir		%{_prefix}/lib/nagios/plugins
+%define		trusted_path	/bin:/sbin:/usr/bin:/usr/sbin
 
 # just to fool configure, nothing arch specific actually
 %define		_target_platform	%{_host_cpu}-%{_vendor}-%{_os}
@@ -38,7 +39,7 @@ specific patterns.
 	--with-gzip=%{__gzip} \
 	--with-seekfiles-dir=/tmp \
 	--with-protocols-dir=/tmp \
-	--with-trusted-path="/bin:/sbin:/usr/bin:/usr/sbin" \
+	--with-trusted-path="%{trusted_path}" \
 	--with-nagios-user=nagios \
 	--with-nagios-group=nagios \
 	--libexec=%{plugindir}
