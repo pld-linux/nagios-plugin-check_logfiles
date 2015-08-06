@@ -7,8 +7,9 @@ Version:	2.4.1.9
 Release:	0.1
 License:	BSD
 Group:		Networking
-URL:		http://www.consol.com/opensource/nagios/check-logfiles
 Source0:	http://www.consol.com/fileadmin/opensource/Nagios/check_logfiles-%{version}.tar.gz
+Source1:	check_logfiles.cfg
+URL:		http://www.consol.com/opensource/nagios/check-logfiles
 # Source0-md5:	fc2b0d394626eb715643cdbbaf13ba69
 Requires:	nagios-core
 BuildArch:	noarch
@@ -26,15 +27,6 @@ specific patterns.
 
 %prep
 %setup -q -n %{plugin}-%{version}
-
-cat > nagios.cfg <<'EOF'
-# Usage:
-# %{plugin}
-define command {
-	command_name    %{plugin}
-	command_line    %{plugindir}/%{plugin} $ARG1$
-}
-EOF
 
 %build
 %{__libtoolize}
@@ -55,11 +47,11 @@ EOF
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -a nagios.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{plugin}.cfg
+install -d $RPM_BUILD_ROOT%{_sysconfdir}
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/%{plugin}.cfg
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,4 +59,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README ChangeLog TODO
+%attr(640,root,nagios) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{plugin}.cfg
 %attr(755,root,root) %{plugindir}/%{plugin}
