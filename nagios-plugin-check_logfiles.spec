@@ -2,13 +2,13 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Check log files for specific patterns
 Name:		nagios-plugin-%{plugin}
-Version:	2.4.1.9
-Release:	0.1
-License:	BSD
-Group:		Networking
-Source0:	http://www.consol.com/fileadmin/opensource/Nagios/check_logfiles-%{version}.tar.gz
+Version:	3.7.1.1
+Release:	1
+License:	GPL v2
+Group:		Applications
+Source0:	https://labs.consol.de/assets/downloads/nagios/%{plugin}-%{version}.tar.gz
+# Source0-md5:	7b26976061e2e54d32dbebf72510e386
 Source1:	check_logfiles.cfg
-# Source0-md5:	fc2b0d394626eb715643cdbbaf13ba69
 URL:		https://labs.consol.de/nagios/check_logfiles/
 BuildRequires:	rpm-perlprov >= 4.1-13
 Requires:	nagios-core
