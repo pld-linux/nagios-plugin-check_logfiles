@@ -1,5 +1,4 @@
 %define		plugin	check_logfiles
-%include	/usr/lib/rpm/macros.perl
 Summary:	Check log files for specific patterns
 Name:		nagios-plugin-%{plugin}
 Version:	3.8.1.4
