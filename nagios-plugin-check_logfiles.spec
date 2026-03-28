@@ -1,12 +1,12 @@
 %define		plugin	check_logfiles
 Summary:	Check log files for specific patterns
 Name:		nagios-plugin-%{plugin}
-Version:	3.8.1.4
+Version:	4.2
 Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	https://labs.consol.de/assets/downloads/nagios/%{plugin}-%{version}.tar.gz
-# Source0-md5:	cc64759534638d17fae051cac8a705fa
+# Source0-md5:	1dbeabd37f449b4be3f8f4931bddd8c8
 Source1:	check_logfiles.cfg
 URL:		https://labs.consol.de/nagios/check_logfiles/
 BuildRequires:	rpm-perlprov >= 4.1-13
