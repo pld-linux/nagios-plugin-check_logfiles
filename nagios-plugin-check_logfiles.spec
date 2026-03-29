@@ -2,7 +2,7 @@
 Summary:	Check log files for specific patterns
 Name:		nagios-plugin-%{plugin}
 Version:	4.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications
 Source0:	https://labs.consol.de/assets/downloads/nagios/%{plugin}-%{version}.tar.gz
